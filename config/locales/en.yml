@@ -1,0 +1,50 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  activerecord:
+    attributes:
+      users:
+        gender:
+          male: 'Чоловік'
+          female: 'Жінка'
+  catalog_label: 'Довiдники'
+  models:
+    user: 'Користувач'
+    users: 'Користувачі'
+    patient: 'Пацієнт'
+    patients: 'Пацієнти'
+    clinician: 'Медичний фахівцець'
+    clinicians: 'Медичні фахівці'
+    profession: 'Професія'
+    professions: 'Професії'
+    clinician_specialtity: 'Медичні фахи'
+    organization: 'Організації'
+    medication_navigation: 'Меню препаратів'
+    medication: 'Препарат'
+    medications: 'Препарати'
+    patient_medication: 'Протипоказання за препаратом'
+    patient_medications: 'Протипоказання за препаратом'
+    disease_navigation: 'Меню захворювань'
+    disease: 'Хвороба'
+    diseases: 'Хвороби'
+    patient_disease: 'Хвороба за диспанцеризацією'
+    patient_diseases: 'Хвороби за диспанцеризацією'
