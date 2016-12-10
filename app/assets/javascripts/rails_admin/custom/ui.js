@@ -1,3 +1,22 @@
+//= require select2
+
+$(document).ready(function() {
+  //$('select').select2();
+
+  //var $eventSelect = $(#patient_diagnostic_select");
+  //$eventSelect.on("select2:select", function (e) {
+  //  $("#patient_diagnostic_select").val()
+  //});
+  //$eventSelect.on("select2:unselect", function (e) { debugger; log("select2:select", e); });
+  //$('.patient-diagnostics').select2({
+  //  placeholder: "Способи лiкування"
+  //});
+  //$('.diagnostics').select2({
+  //  placeholder: "Хвороба"
+  //});
+});
+
+
 $(document).on('ready pjax:success', function() {
   handleActiveBase();
   function handleActiveBase() {

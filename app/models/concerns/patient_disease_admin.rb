@@ -26,7 +26,7 @@ module PatientDiseaseAdmin
     end
 
     def custom_label_method
-      "Захворювання # #{id} (#{disease.name})"
+      "Захворювання (#{disease.name})"
     end
   end
 end

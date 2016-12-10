@@ -22,6 +22,10 @@ module DiseaseAdmin
       field :treatment do
         label 'Лікування'
       end
+      field :requirements do
+        label 'Необхідні показники'
+        partial 'disease_requirements'
+      end
     end
   end
 end

@@ -1,0 +1,191 @@
+.card-wrapper
+    %table.card__table
+        %tr
+            %td.card__td.text-center.border-right{:width => "45%"}
+                %h2 Міністерство охорони и здоров'я України
+            %td.card__td{:width => "10%"}
+            %td.card__td.text-upper.text-center.border-bottom.border-left{:width => "45%"} Медична документація
+        %tr
+            %td.card__td.border-right{:height => "70px", :valign => "top"} Найменування та місцезнахождення (повна поштова адреса) закладу охорони здоров'я, де заповнюється форма
+            %td.card__td
+            %td.card__td.border-left.text-center
+                Форма первинної облікової документації
+                %b
+                    %br>/
+                    № 025/о
+                    %br/
+                    ЗАТВЕРДЖЕНО
+        %tr
+            %td.card__td.border-right
+                %hr/
+                .float-left Код за ЄДРПОУ
+                %ul.list-inline.float-right.teeth{:style => "margin-right: 10px"}
+                    %li 1
+                    %li 2
+                    %li 3
+                    %li 4
+                    %li 5
+                    %li 6
+                    %li 7
+                    %li 8
+            %td.card__td
+            %td.card__td.border-left
+                .text-center Наказ МОЗ України
+                %div{:style => "display: table; margin: 0 auto"}
+                    %ul.list-inline.teeth.float-left
+                        %li 1
+                        %li 2
+                        %li 3
+                        %li 4
+                        %li 5
+                        %li 6
+                        %li р.
+                    .float-left{:style => "padding: 0 10px"} №
+                    %ul.list-inline.teeth.float-left
+                        %li 1
+                        %li 2
+                        %li 3
+                        %li 4
+    %table.card__table{:style => "border-top: none"}
+        %tr
+            %td.card__td.text-center.text-upper{:colspan => "2"}
+                %h1
+                    медична карта амбулаторного хворого №
+                    %span.bot-line{:style => "width: 150px"}= @patient.id
+        %tr
+            %td.card__td{:width => "60%"}
+                .float-left Код хворого
+                %ul.list-inline.float-left.teeth{:style => "margin-left: 10px"}
+                    - @patient.code.split('').each do |c|
+                        = content_tag(:li, c)
+            %td
+                .float-left Дата заповнення карти
+                .float-left
+                    %ul.list-inline.teeth{:style => "margin-left: 10px"}
+                        %li 1
+                        %li 2
+                        %li 3
+                        %li 4
+                        %li 5
+                        %li 6
+                    %div{:style => "clear: both"}
+                    .text-center (число, місяць, рік)
+    %table.card__table{:style => "border-top: none"}
+        %tr
+            %td.card__td{:colspan => "2", :height => "40px"}
+                .float-left{:style => "width: 25%"} 1. Прізвище, ім'я, по батькові
+                .float-left{:style => "border-bottom: 1px solid #000; width: 75%;"}= full_name(@patient)
+        / nbsp has fixed float margin
+        %tr
+            %td.card__td{:colspan => "2", :height => "40px"}
+                .float-left 2. Стать: чоловіча — 1, жіноча — 2
+                .float-left{:style => "padding: 0 20px 0 10px"}
+                    .card__window 1
+                .float-left 3. Дата народження
+                .float-left{:style => "padding-right: 20px"}
+                    %ul.list-inline.teeth{:style => "margin-left: 10px"}
+                        %li 1
+                        %li 2
+                        %li 3
+                        %li 4
+                        %li 5
+                        %li 6
+                    %div{:style => "clear: both"}
+                    .text-center (число, місяць, рік)
+                .float-left
+                    4. Телефон: дом.
+                    %span.card__data-border--min= @patient.home_number
+                    робочий
+                    %span.card__data-border--mid= @patient.work_number
+        %tr
+            %td.card__td{:colspan => "2", :height => "40px", :style => "line-height: 1.5em"}
+                %span{:style => "padding-right: 5px"} 5. Місце проживання хворого
+                %span.card__data-border--f{:style => "margin-right: 20px"}= @patient.address
+                %nobr
+                    %span{:style => "padding-right: 5px"} 6. Місце роботи, посада
+                    %span.card__data-border--f= @patient.profession.name
+        %tr
+            %td.card__td{:colspan => "2"}
+                .float-left 7. Диспансерна группа (так — 1, ні — 2)
+                .float-left{:style => "padding: 0 20px 0 10px"}
+                    .card__window 1
+        %tr
+            %td.card__td{:colspan => "2"}
+                .float-left
+                    8. Текст-«рыба» имеет функцию заполнения места или сравнения воздействия рисунков шрифта
+                    Рыбным текстом называется текст, служащий для временного наполнения макета в публикациях или
+                    производстве веб-сайтов, пока финальный текст еще не создан. Рыбный текст также известен как
+                    текст-заполнитель или же текст-наполнитель. Иногда текст-«рыба» также используется композиторами
+                    при написании музыки. Они напевают его перед тем, как сочинены соответствующие слова. Уже в 16-том
+                    веке рыбные тексты имели широкое распространение у печатников.
+                .float-left{:style => "padding: 10px 20px 5px 10px;"}
+                    %span.card__data-border--mid.float-left{:style => "margin-right: 20px"}  
+                    .card__window.float-left 1
+        %tr
+            %td.card__td{:colspan => "2"}
+                .float-left 9. Номер пільгового посвідчення
+                .float-left{:style => "padding-right: 20px"}
+                    %ul.list-inline.teeth{:style => "margin-left: 10px"}
+                        - @patient.benefit_certificate_number.split('').each do |c|
+                            = content_tag(:li, c)
+        %tr
+            %td.card__td{:height => "80px"}
+                .float-left 10. Взятий(а) на облік
+                .float-left{:style => "padding-right: 10px"}
+                    %ul.list-inline.teeth{:style => "margin-left: 10px"}
+                        %li 1
+                        %li 2
+                        %li 3
+                        %li 4
+                        %li 5
+                        %li 6
+                    %div{:style => "clear: both"}
+                    .text-center (число, місяць, рік)
+                .float-left
+                    з приводу
+                    %span.card__data-border--min{:style => "margin-right: 20px"}  
+                %div{:style => "clear: both;"}
+                %div
+                    .float-left{:style => "padding-right: 10px; padding-left: 150px"}
+                        %ul.list-inline.teeth{:style => "margin-left: 10px"}
+                            %li 1
+                            %li 2
+                            %li 3
+                            %li 4
+                            %li 5
+                            %li 6
+                        %div{:style => "clear: both"}
+                        .text-center (число, місяць, рік)
+                    .float-left
+                        з приводу
+                        %span.card__data-border--min{:style => "margin-right: 20px"}  
+            %td.card__td
+                .float-left 11. Знятий(а) на облік
+                .float-left{:style => "padding-right: 10px"}
+                    %ul.list-inline.teeth{:style => "margin-left: 10px"}
+                        %li 1
+                        %li 2
+                        %li 3
+                        %li 4
+                        %li 5
+                        %li 6
+                    %div{:style => "clear: both"}
+                    .text-center (число, місяць, рік)
+                .float-left
+                    (причина)
+                    %span.card__data-border--min{:style => "margin-right: 20px"}  
+                %div{:style => "clear: both;"}
+                %div
+                    .float-left{:style => "padding-right: 10px; padding-left: 150px"}
+                        %ul.list-inline.teeth.card__last-number{:style => "margin-left: 10px"}
+                            %li 1
+                            %li 2
+                            %li 3
+                            %li 4
+                            %li 5
+                            %li 6
+                        %div{:style => "clear: both"}
+                        .text-center (число, місяць, рік)
+                    .float-left
+                        (причина)
+                        %span.card__data-border--min{:style => "margin-right: 20px"}  

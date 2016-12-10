@@ -48,6 +48,7 @@ group :development do
 end
 
 group :assets do
+  gem 'therubyracer'
   gem 'uglifier'
 end
 

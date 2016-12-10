@@ -21,12 +21,16 @@
 
 en:
   activerecord:
+    errors:
+      messages:
+        disease_requirements: "Обов`язково для (%{disease}): "
     attributes:
       users:
         gender:
           male: 'Чоловік'
           female: 'Жінка'
   catalog_label: 'Довiдники'
+  dob_format: '%d-%m-%Y'
   models:
     user: 'Користувач'
     users: 'Користувачі'
@@ -34,6 +38,8 @@ en:
     patients: 'Пацієнти'
     clinician: 'Медичний фахівцець'
     clinicians: 'Медичні фахівці'
+    receptionist: 'Реєстратура'
+    receptionists: 'Реєстратура'
     profession: 'Професія'
     professions: 'Професії'
     clinician_specialtity: 'Медичні фахи'
@@ -48,3 +54,5 @@ en:
     diseases: 'Хвороби'
     patient_disease: 'Хвороба за диспанцеризацією'
     patient_diseases: 'Хвороби за диспанцеризацією'
+    disease_requirement: 'Необхідні показники для хвороби'
+    disease_requirements: 'Необхідні показники для хвороби'

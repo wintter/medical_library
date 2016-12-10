@@ -22,7 +22,7 @@ module PatientMedicationAdmin
     end
 
     def custom_label_method
-      "Протипоказання # #{id} (#{medication.name})"
+      "Протипоказання (#{medication.name})"
     end
   end
 end

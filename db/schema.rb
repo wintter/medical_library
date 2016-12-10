@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161127160435) do
+ActiveRecord::Schema.define(version: 20161204150834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,14 +26,21 @@ ActiveRecord::Schema.define(version: 20161127160435) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "disease_requirements", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "diseases", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.text     "symptoms"
     t.text     "reason"
     t.text     "diagnostics"
     t.text     "treatment"
+    t.string   "requirements"
   end
 
   create_table "dispensary_groups", force: :cascade do |t|
@@ -59,6 +66,25 @@ ActiveRecord::Schema.define(version: 20161127160435) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "patient_diagnostics", force: :cascade do |t|
+    t.integer  "patient_id"
+    t.integer  "disease_id"
+    t.text     "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["patient_id", "disease_id"], name: "index_patient_diagnostics_on_patient_id_and_disease_id", using: :btree
+  end
+
+  create_table "patient_disease_requirements", force: :cascade do |t|
+    t.integer  "patient_id"
+    t.integer  "disease_requirement_id"
+    t.text     "comment"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["disease_requirement_id"], name: "index_patient_disease_requirements_on_disease_requirement_id", using: :btree
+    t.index ["patient_id"], name: "index_patient_disease_requirements_on_patient_id", using: :btree
   end
 
   create_table "patient_diseases", force: :cascade do |t|
@@ -98,6 +124,31 @@ ActiveRecord::Schema.define(version: 20161127160435) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.string   "taggable_type"
+    t.integer  "taggable_id"
+    t.string   "tagger_type"
+    t.integer  "tagger_id"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+    t.index ["context"], name: "index_taggings_on_context", using: :btree
+    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+    t.index ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy", using: :btree
+    t.index ["taggable_id"], name: "index_taggings_on_taggable_id", using: :btree
+    t.index ["taggable_type"], name: "index_taggings_on_taggable_type", using: :btree
+    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type", using: :btree
+    t.index ["tagger_id"], name: "index_taggings_on_tagger_id", using: :btree
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
+    t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|

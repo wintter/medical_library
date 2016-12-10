@@ -1,0 +1,3 @@
+= collection_select('disease', 'requirements', DiseaseRequirement.all, :id, :name,
+  { selected: -> (req) { @object.has_requirement?(req) }},
+  { multiple: :multiple, style: 'width: 50%' })

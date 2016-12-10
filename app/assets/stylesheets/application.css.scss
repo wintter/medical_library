@@ -5,3 +5,15 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+html {
+  height: 100%;
+  background-image: url(asset-path('header-background.jpg'));
+  background-position: center center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+#santias-app.container {
+  background: none;
+  margin-top: 100px;
+}
