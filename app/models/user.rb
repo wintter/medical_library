@@ -5,13 +5,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  enum gender: [I18n.t('activerecord.attributes.users.gender.male'), I18n.t('activerecord.attributes.users.gender.female')]
-  # enum type: [Patient.name, Clinician.name, Receptionist.name]
-
   scope :male, -> { where(gender: 'Male') }
   scope :female, -> { where(gender: 'Female') }
 
-  before_save :assign_default_type
+  before_save { assign_default_type if new_record? }
 
   def clinician?
     is_a? Clinician

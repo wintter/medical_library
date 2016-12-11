@@ -11,6 +11,7 @@ class Disease < ApplicationRecord
   before_save :assign_requirements, if: :requirements_changed?
 
   def has_requirement?(requirement)
+    return false if requirements.nil?
     requirements.split('/').include? requirement.id.to_s
   end
 

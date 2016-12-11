@@ -9,7 +9,7 @@ class Ability
     elsif user.receptionist?
       can :dashboard
       can :access, :rails_admin
-      can :manage, [Patient, PatientDisease, PatientMedication, Disease, Medication, Profession]
+      can :manage, [Patient, PatientDisease, PatientMedication, Disease, Medication, Profession, BenefitCategory]
     elsif user.patient?
       can :read, Patient, id: user.id
     end

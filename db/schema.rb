@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20161204150834) do
   enable_extension "plpgsql"
 
   create_table "benefit_categories", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -41,11 +42,6 @@ ActiveRecord::Schema.define(version: 20161204150834) do
     t.text     "diagnostics"
     t.text     "treatment"
     t.string   "requirements"
-  end
-
-  create_table "dispensary_groups", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "medications", force: :cascade do |t|
@@ -126,38 +122,13 @@ ActiveRecord::Schema.define(version: 20161204150834) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "taggings", force: :cascade do |t|
-    t.integer  "tag_id"
-    t.string   "taggable_type"
-    t.integer  "taggable_id"
-    t.string   "tagger_type"
-    t.integer  "tagger_id"
-    t.string   "context",       limit: 128
-    t.datetime "created_at"
-    t.index ["context"], name: "index_taggings_on_context", using: :btree
-    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
-    t.index ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
-    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
-    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy", using: :btree
-    t.index ["taggable_id"], name: "index_taggings_on_taggable_id", using: :btree
-    t.index ["taggable_type"], name: "index_taggings_on_taggable_type", using: :btree
-    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type", using: :btree
-    t.index ["tagger_id"], name: "index_taggings_on_tagger_id", using: :btree
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.string  "name"
-    t.integer "taggings_count", default: 0
-    t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree
-  end
-
   create_table "users", force: :cascade do |t|
-    t.string   "email",                      default: "", null: false
-    t.string   "encrypted_password",         default: "", null: false
+    t.string   "email",                      default: "",    null: false
+    t.string   "encrypted_password",         default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",              default: 0,  null: false
+    t.integer  "sign_in_count",              default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -174,8 +145,11 @@ ActiveRecord::Schema.define(version: 20161204150834) do
     t.string   "benefit_certificate_number"
     t.text     "signal_indicator"
     t.string   "code"
+    t.boolean  "dispensary_group",           default: false
     t.integer  "clinician_speciality_id"
     t.integer  "profession_id"
+    t.integer  "benefit_category_id"
+    t.index ["benefit_category_id"], name: "index_users_on_benefit_category_id", using: :btree
     t.index ["clinician_speciality_id"], name: "index_users_on_clinician_speciality_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["profession_id"], name: "index_users_on_profession_id", using: :btree

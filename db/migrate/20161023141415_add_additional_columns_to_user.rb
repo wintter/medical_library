@@ -12,8 +12,10 @@ class AddAdditionalColumnsToUser < ActiveRecord::Migration[5.0]
     add_column :users, :benefit_certificate_number, :string
     add_column :users, :signal_indicator, :text
     add_column :users, :code, :string
+    add_column :users, :dispensary_group, :boolean, default: false
 
     add_reference :users, :clinician_speciality, index: true
     add_reference :users, :profession, index: true
+    add_reference :users, :benefit_category, index: true
   end
 end

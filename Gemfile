@@ -5,7 +5,6 @@ gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'pg'
 gem 'puma', '~> 3.0'
 gem 'cancancan'
-gem 'aasm'
 gem 'haml'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'font-awesome-sass'
@@ -13,7 +12,6 @@ gem 'devise-bootstrap-views'
 
 # Auth
 gem 'devise'
-gem 'omniauth'
 
 # Admin configuration
 gem 'rails_admin', '~> 1.0'

@@ -25,8 +25,8 @@ en:
       messages:
         disease_requirements: "Обов`язково для (%{disease}): "
     attributes:
-      users:
-        gender:
+      patient:
+        genders:
           male: 'Чоловік'
           female: 'Жінка'
   catalog_label: 'Довiдники'
@@ -56,3 +56,5 @@ en:
     patient_diseases: 'Хвороби за диспанцеризацією'
     disease_requirement: 'Необхідні показники для хвороби'
     disease_requirements: 'Необхідні показники для хвороби'
+    benefit_category: 'Контингент'
+    benefit_categories: 'Контингент'

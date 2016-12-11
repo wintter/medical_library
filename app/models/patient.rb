@@ -1,6 +1,7 @@
 class Patient < User
   include PatientAdmin
   belongs_to :profession
+  belongs_to :benefit_category
 
   # Callbacks
   before_create :assign_code
@@ -18,7 +19,7 @@ class Patient < User
 
   has_many :disease_requirement, class_name: PatientDiseaseRequirement.name
 
-  validates :email, :name, :surname, :patronymic, presence: true
+  validates :email, :name, :surname, :patronymic, :profession, presence: true
   validate :diagnostics_requirement
 
   private

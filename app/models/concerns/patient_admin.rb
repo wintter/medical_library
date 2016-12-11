@@ -93,6 +93,18 @@ module PatientAdmin
             bindings[:view]._current_user.receptionist?
           end
         end
+        field :dispensary_group do
+          label 'Диспансерна група'
+          visible do
+            bindings[:view]._current_user.receptionist?
+          end
+        end
+        field :benefit_category do
+          label 'Контингент'
+          visible do
+            bindings[:view]._current_user.receptionist?
+          end
+        end
         field :patient_diseases do
           inverse_of :patient
           label I18n.t('models.patient_diseases')
@@ -113,7 +125,7 @@ module PatientAdmin
             -> (scope) { scope.where(patient_id: patient.id) }
           end
           inverse_of :patient
-          label 'Для хвороби'
+          label 'Показання для диагнозу'
           visible do
             bindings[:view]._current_user.clinician?
           end
